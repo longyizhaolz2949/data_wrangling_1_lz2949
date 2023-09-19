@@ -58,3 +58,57 @@ str(litters_df) # structure of the dataframe
 skimr::skim(litters_df)
 ```
 
+
+## Options in `read_*`
+
+
+```{r}
+# read csv assume the first rwo is the name 
+litters_df = 
+  read_csv("data/FAS_litters.csv", 
+           skip = 10, col_names = FALSE) # can skip 10 rows
+```
+
+look at NA vlaues
+
+```{r,eval = FALSE }
+litters_df = 
+  read_csv("data/FAS_litters.csv", 
+           na = c("NA", 19)) # treating 19 as na vlaues 
+
+```
+
+column types
+
+```{r}
+litters_data = read_csv(file = "./data/FAS_litters.csv",
+  col_types = cols(
+    Group = col_factor()
+  )
+)
+head(litters_data)
+
+```
+
+
+```{r}
+library(tidyverse)
+library(readxl)
+library(haven)
+# read xlsx files
+```
+
+import a xlsx file first 
+
+
+```{r}
+mlb_df = read_excel("data/mlb11.xlsx")
+```
+
+import a SAS file
+
+```{r}
+pulse_df = read_sas("data/public_pulse_data.sas7bdat")
+```
+
+

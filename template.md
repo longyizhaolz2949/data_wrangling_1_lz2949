@@ -245,3 +245,71 @@ Data summary
 | Pups born alive   |         0 |          1.00 |  7.35 | 1.76 |  3.0 |  6.00 |  8.00 |  8.00 | 11.0 | ▁▃▂▇▁ |
 | Pups dead @ birth |         0 |          1.00 |  0.33 | 0.75 |  0.0 |  0.00 |  0.00 |  0.00 |  4.0 | ▇▂▁▁▁ |
 | Pups survive      |         0 |          1.00 |  6.41 | 2.05 |  1.0 |  5.00 |  7.00 |  8.00 |  9.0 | ▁▃▂▇▇ |
+
+## Options in `read_*`
+
+``` r
+# read csv assume the first rwo is the name 
+litters_df = 
+  read_csv("data/FAS_litters.csv", 
+           skip = 10, col_names = FALSE) # can skip 10 rows
+```
+
+    ## Rows: 40 Columns: 8
+    ## ── Column specification ────────────────────────────────────────────────────────
+    ## Delimiter: ","
+    ## chr (2): X1, X2
+    ## dbl (6): X3, X4, X5, X6, X7, X8
+    ## 
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+look at NA vlaues
+
+``` r
+litters_df = 
+  read_csv("data/FAS_litters.csv", 
+           na = c("NA", 19)) # treating 19 as na vlaues 
+```
+
+column types
+
+``` r
+litters_data = read_csv(file = "./data/FAS_litters.csv",
+  col_types = cols(
+    Group = col_factor()
+  )
+)
+head(litters_data)
+```
+
+    ## # A tibble: 6 × 8
+    ##   Group `Litter Number` `GD0 weight` `GD18 weight` `GD of Birth`
+    ##   <fct> <chr>                  <dbl>         <dbl>         <dbl>
+    ## 1 Con7  #85                     19.7          34.7            20
+    ## 2 Con7  #1/2/95/2               27            42              19
+    ## 3 Con7  #5/5/3/83/3-3           26            41.4            19
+    ## 4 Con7  #5/4/2/95/2             28.5          44.1            19
+    ## 5 Con7  #4/2/95/3-3             NA            NA              20
+    ## 6 Con7  #2/2/95/3-2             NA            NA              20
+    ## # ℹ 3 more variables: `Pups born alive` <dbl>, `Pups dead @ birth` <dbl>,
+    ## #   `Pups survive` <dbl>
+
+``` r
+library(tidyverse)
+library(readxl)
+library(haven)
+# read xlsx files
+```
+
+import a xlsx file first
+
+``` r
+mlb_df = read_excel("data/mlb11.xlsx")
+```
+
+import a SAS file
+
+``` r
+pulse_df = read_sas("data/public_pulse_data.sas7bdat")
+```
