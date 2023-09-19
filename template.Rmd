@@ -9,7 +9,7 @@ library(tidyverse)
 lets import the 'FAS_litters.csv'
 
 ```{r}
-litters_df = read_csv("data/FAS_litters.csv")
+litters_df = read_csv("./data/FAS_litters.csv")
 
 # clean the name, upper case to lower case...
 litters_df 
@@ -17,7 +17,7 @@ litters_df
 
 ```
 
-import the same dataset using an absolute path 
+Import the same dataset using an absolute path 
 
 
 ```{r}
@@ -26,5 +26,35 @@ litters_df_abs = read_csv("~/Desktop/data_wrangleing_1/data/FAS_litters.csv")
 # clean the name, upper case to lower case...
 litters_df_abs =  janitor::clean_names(litters_df)
 
+```
+
+Import pup data
+
+```{r}
+pups_data = read_csv(file = "./data/FAS_pups.csv")
+pups_data = read_csv(file = "~/Desktop/data_wrangleing_1/data/FAS_pups.csv")
+```
+
+## Look at data
+
+```{r}
+litters_df
+
+head(litters_df) # first six rows
+tail(litters_df) 
+```
+
+you can use 'view'
+
+```{r, eval = FALSE}
+view(litters_df) # don't include view in Rmd file 
+```
+
+look at a data summary 
+
+```{r}
+str(litters_df) # structure of the dataframe
+
+skimr::skim(litters_df)
 ```
 
