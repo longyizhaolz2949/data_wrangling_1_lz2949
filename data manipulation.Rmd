@@ -1,12 +1,12 @@
 ---
-title: "data manipulation"
+title: "Data Manipulation"
 output: github_document
 ---
 ```{r}
 library(tidyverse)
 ```
 
-lets import the 'FAS_litters.csv'
+lets import the 'FAS_litters.csv', import FAS litters and pups
 
 ```{r}
 litters_df = read_csv("./data/FAS_litters.csv")
@@ -20,6 +20,21 @@ pups_data_df = janitor::clean_names(pups_data)
 
 ```
 
+## select
+
+specify the columns you wnat by naming all of them 
+
+```{r}
+select(litters_df, group, litter_number, gd0_weight, pups_born_alive)
+
+select(litters_df, group, gd0_weight:gd_of_birth) # specify the range of columns to keep 
+
+select(litters_df, group, starts_with("pups")) #select those column start with gd
+
+select(litters_df, GROUP = group, LiTtEr_NuMbEr = litter_number) # rename variables
+
+select(litters_df, -litter_number) # remove variables 
+```
 
 
 
