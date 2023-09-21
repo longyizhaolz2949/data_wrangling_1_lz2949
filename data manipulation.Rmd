@@ -1,0 +1,25 @@
+---
+title: "data manipulation"
+output: github_document
+---
+```{r}
+library(tidyverse)
+```
+
+lets import the 'FAS_litters.csv'
+
+```{r}
+litters_df = read_csv("./data/FAS_litters.csv")
+
+# clean the name, upper case to lower case...
+litters_df = janitor::clean_names(litters_df)
+  
+pups_data = read_csv(file = "~/Desktop/data_wrangleing_1/data/FAS_pups.csv")
+
+pups_data_df = janitor::clean_names(pups_data)
+
+```
+
+
+
+
